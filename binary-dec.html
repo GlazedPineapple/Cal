@@ -5,23 +5,33 @@
     <title>Binary/Decimal Converter</title>
 
     <style>
+        body {
+            background-color: rgb(34, 34, 34); /* Dark background */
+            color: #e0e0e0; /* Light text color */
+        }
+
         table {
-            border: 3px solid purple; /* changed border color to purple */
+            border: 3px solid #370036; /* Darker purple border */
             margin-left: auto;
             margin-right: auto;
             border-radius: 20px;
-            border: 8px solid rgb(166, 0, 178);
+            border: 8px solid #bb86fc; /* Lighter purple border */
+            background-color: #1e1e1e; /* Darker table background */
         }
 
         input[type="button"] {
             width: 100%;
             padding: 10px 10px;
-            background-color: rgba(119, 0, 255, 0.276);
-            color: rgb(166, 0, 178);
+            background-color: #333333; /* Dark button background */
+            color: #bb86fc; /* Purple button text */
             font-size: 30px;
             font-weight: bold;
             border: none;
             border-radius: 5px;
+        }
+
+        input[type="button"]:hover {
+            background-color: #444444; /* Slightly lighter dark background on hover */
         }
 
         input[type="text"] {
@@ -29,19 +39,33 @@
             font-size: 24px;
             font-weight: bold;
             border: none;
-            border: 8px solid rgb(166, 0, 178);
+            border: 8px solid #bb86fc;
             border-radius: 20px;
-
+            background-color: #282828; /* Dark input background */
+            color: #e0e0e0; /* Light input text color */
         }
 
         #modeSwitch {
             margin: 10px auto;
             display: block;
             padding: 10px 20px;
-            background-color: #e0e0e0;
-            border: 1px solid #ccc;
+            background-color: #333333; /* Dark button background */
+            color: #bb86fc; /* Purple button text */
+            border: none;
             border-radius: 5px;
             cursor: pointer;
+        }
+
+        #modeSwitch:hover {
+            background-color: #444444; /* Slightly lighter dark background on hover */
+        }
+
+        a {
+            color: #bb86fc; /* Link color */
+        }
+
+        a:hover {
+            color: #cf94da; /* Lighter link color on hover */
         }
     </style>
 </head>

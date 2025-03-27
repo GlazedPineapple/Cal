@@ -6,23 +6,33 @@
     <title>Calculator</title>
 
     <style>
+        body {
+            background-color: rgb(34, 34, 34); /* Dark background */
+            color: #e0e0e0; /* Light text color */
+        }
+
         table {
-            border: 3px solid rgb(123, 86, 120);
+            border: 3px solid #370036; /* Darker purple border */
             margin-left: auto;
             margin-right: auto;
             border-radius: 20px;
-            border: 8px solid rgb(236,88, 189);
+            border: 8px solid #bb86fc; /* Lighter purple border */
+            background-color: #1e1e1e; /* Darker table background */
         }
 
         input[type="button"] {
             width: 100%;
             padding: 10px 10px;
-            background-color: rgba(51, 51, 52, 0.276);
-            color: rgb(203, 116, 209);
+            background-color: #333333; /* Dark button background */
+            color: #bb86fc; /* Purple button text */
             font-size: 30px;
             font-weight: bold;
             border: none;
             border-radius: 5px;
+        }
+
+        input[type="button"]:hover {
+            background-color: #444444; /* Slightly lighter dark background on hover */
         }
 
         input[type="text"] {
@@ -31,7 +41,17 @@
             font-weight: bold;
             border: none;
             border-radius: 20px;
-            border: 8px solid rgb(45, 45, 45);
+            border: 8px solid #282828; /* Darker input border */
+            background-color: #282828; /* Dark input background */
+            color: #e0e0e0; /* Light input text color */
+        }
+
+        a {
+            color: #bb86fc; /* Link color */
+        }
+
+        a:hover {
+            color: #cf94da; /* Lighter link color on hover */
         }
     </style>
 </head>
