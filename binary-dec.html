@@ -1,135 +1,134 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <p> <a href='/index.html' </a> Home </p>
-        <p> <a href='/basic-calc.html' </a> 4 Function Calculator </p>
-        <p> <a href='/binary-dec.html' </a> Binary <-> Decimal Calculator </p>
+<head>
+    <title>Binary/Decimal Converter</title>
 
-        <title>Binary/Decimal Converter</title>
+    <style>
+        table {
+            border: 3px solid purple; /* changed border color to purple */
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 20px;
+            border: 8px solid rgb(166, 0, 178);
+        }
 
-        <style>
-            table {
-                border: 3px solid purple;
-                margin-left: auto;
-                margin-right: auto;
-                border-radius: 20px;
-                border: 8px solid rgb(166, 0, 178);
+        input[type="button"] {
+            width: 100%;
+            padding: 10px 10px;
+            background-color: rgba(119, 0, 255, 0.276);
+            color: rgb(166, 0, 178);
+            font-size: 30px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+        }
+
+        input[type="text"] {
+            padding: 20px 20px;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border: 8px solid rgb(166, 0, 178);
+            border-radius: 20px;
+
+        }
+
+        #modeSwitch {
+            margin: 10px auto;
+            display: block;
+            padding: 10px 20px;
+            background-color: #e0e0e0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <p> <a href='/index.html'> Home </a> </p>
+    <p> <a href='/basic-calc.html'> 4 Function Calculator </a> </p>
+    <p> <a href='/binary-dec.html'> Binary <-> Decimal Calculator </a> </p>
+
+    <button id="modeSwitch">Binary to Decimal</button>
+
+    <table id="calcu">
+        <tr>
+            <td colspan="3">
+                <input type="text" id="inputField" placeholder="Input">
+            </td>
+            <td><input type="button" value="c" onclick="clearInput()"></td>
+        </tr>
+
+        <tr>
+            <td><input type="button" value="1" onclick="appendToInput('1')" class="binaryButton"></td>
+            <td><input type="button" value="0" onclick="appendToInput('0')" class="binaryButton"></td>
+            <td colspan="2"><input type="button" value="Convert" onclick="convert()"></td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <input type="text" id="resultField" placeholder="Result" readonly>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        let isBinaryToDecimal = true;
+        const modeSwitch = document.getElementById('modeSwitch');
+        const binaryButtons = document.querySelectorAll('.binaryButton');
+
+        modeSwitch.addEventListener('click', () => {
+            isBinaryToDecimal = !isBinaryToDecimal;
+            if (isBinaryToDecimal) {
+                modeSwitch.textContent = "Binary to Decimal";
+                document.getElementById('inputField').placeholder = "Binary Input";
+                document.getElementById('resultField').placeholder = "Decimal Result";
+                binaryButtons.forEach(button => button.style.display = '');
+            } else {
+                modeSwitch.textContent = "Decimal to Binary";
+                document.getElementById('inputField').placeholder = "Decimal Input";
+                document.getElementById('resultField').placeholder = "Binary Result";
+                binaryButtons.forEach(button => button.style.display = 'none');
             }
+            clearInput();
+        });
 
-            input[type="button"] {
-                width: 100%;
-                padding: 10px 10px;
-                background-color: rgba(119, 0, 255, 0.276);
-                color: rgb(166, 0, 178);
-                font-size: 30px;
-                font-weight: bold;
-                border: none;
-                border-radius: 5px;
-            }
+        function appendToInput(value) {
+            document.getElementById('inputField').value += value;
+        }
 
-            input[type="text"] {
-                padding: 20px 20px;
-                font-size: 24px;
-                font-weight: bold;
-                border: none;
-                border: 8px solid rgb(166, 0, 178);
-                border-radius: 20px;
+        function clearInput() {
+            document.getElementById('inputField').value = '';
+            document.getElementById('resultField').value = '';
+        }
 
-            }
+        function convert() {
+            const input = document.getElementById('inputField').value;
+            const resultField = document.getElementById('resultField');
 
-            #modeSwitch {
-                margin: 10px auto;
-                display: block;
-                padding: 10px 20px;
-                background-color: #e0e0e0;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-                cursor: pointer;
-            }
-        </style>
-    </head>
-
-    <body>
-
-        <button id="modeSwitch">Binary to Decimal</button>
-
-        <table id="calcu">
-            <tr>
-                <td colspan="3">
-                    <input type="text" id="inputField" placeholder="Input">
-                </td>
-                <td><input type="button" value="c" onclick="clearInput()"></td>
-            </tr>
-
-            <tr>
-                <td><input type="button" value="1" onclick="appendToInput('1')" class="binaryButton"></td>
-                <td><input type="button" value="0" onclick="appendToInput('0')" class="binaryButton"></td>
-                <td colspan="2"><input type="button" value="Convert" onclick="convert()"></td>
-            </tr>
-            <tr>
-                <td colspan="4">
-                    <input type="text" id="resultField" placeholder="Result" readonly>
-                </td>
-            </tr>
-        </table>
-
-        <script>
-            let isBinaryToDecimal = true;
-            const modeSwitch = document.getElementById('modeSwitch');
-            const binaryButtons = document.querySelectorAll('.binaryButton');
-
-            modeSwitch.addEventListener('click', () => {
-                isBinaryToDecimal = !isBinaryToDecimal;
-                if (isBinaryToDecimal) {
-                    modeSwitch.textContent = "Binary to Decimal";
-                    document.getElementById('inputField').placeholder = "Binary Input";
-                    document.getElementById('resultField').placeholder = "Decimal Result";
-                    binaryButtons.forEach(button => button.style.display = '');
-                } else {
-                    modeSwitch.textContent = "Decimal to Binary";
-                    document.getElementById('inputField').placeholder = "Decimal Input";
-                    document.getElementById('resultField').placeholder = "Binary Result";
-                    binaryButtons.forEach(button => button.style.display = 'none');
+            if (isBinaryToDecimal) {
+                if (!/^[01]+$/.test(input)) {
+                    resultField.value = "Invalid Binary";
+                    return;
                 }
-                clearInput();
-            });
-
-            function appendToInput(value) {
-                document.getElementById('inputField').value += value;
-            }
-
-            function clearInput() {
-                document.getElementById('inputField').value = '';
-                document.getElementById('resultField').value = '';
-            }
-
-            function convert() {
-                const input = document.getElementById('inputField').value;
-                const resultField = document.getElementById('resultField');
-
-                if (isBinaryToDecimal) {
-                    if (!/^[01]+$/.test(input)) {
-                        resultField.value = "Invalid Binary";
-                        return;
+                let decimalResult = 0;
+                for (let i = 0; i < input.length; i++) {
+                    if (input[input.length - 1 - i] === '1') {
+                        decimalResult += Math.pow(2, i);
                     }
-                    let decimalResult = 0;
-                    for (let i = 0; i < input.length; i++) {
-                        if (input[input.length - 1 - i] === '1') {
-                            decimalResult += Math.pow(2, i);
-                        }
-                    }
-                    resultField.value = decimalResult;
-                } else {
-                    const decimalInput = parseInt(input);
-                    if (isNaN(decimalInput)) {
-                        resultField.value = "Invalid Decimal";
-                        return;
-                    }
-                    resultField.value = decimalInput.toString(2);
                 }
+                resultField.value = decimalResult;
+            } else {
+                const decimalInput = parseInt(input);
+                if (isNaN(decimalInput)) {
+                    resultField.value = "Invalid Decimal";
+                    return;
+                }
+                resultField.value = decimalInput.toString(2);
             }
-        </script>
-    </body>
+        }
+    </script>
+</body>
 
 </html>
